@@ -29,9 +29,27 @@
         <hr>
 
         <section id="main_content">
-          <h3>Test-Website</h3>
+          <h3>Pattern Mining in Movement Data</h3>
 
-<p>Here my data will be published</p>
+        <p>I wrote my bachelor thesis at the Ludiwig-Maximilian University in 2012. Here you will find all my 
+        data and code.</p>
+        
+        <ul>
+        <li><strong>KinectCollectingData</strong> contains the Code I used to write the Joints that
+        were recognized by Kinect into csv-files. A file consists of the time in miliseconds since the start of the 
+          recording followed by the twenty joints. One joint is represented by four coordinates: x, y and z as
+          for usual points in 3D and the coordinate w, that should indicate how sure the joint was recognized.
+          Yet, w is always 1, so I ignored it.
+        </li>
+        <li><strong>Data</strong> simply containes all the movement data I collected, either plain or
+          encoded via iSAX encoding.
+        </li>
+        <li><strong>Viewer</strong> contains the Viewer I used to take a look at the data.</li>
+        <li><strong>BA</strong> contains the code I used to find patterns. You'll find different states of the
+          code in the history. More information can be found in my Thesis
+        </li>
+        </ul>
+        
         </section>
 
         <footer>
