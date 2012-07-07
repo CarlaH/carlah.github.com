@@ -35,18 +35,34 @@
         data and code.</p>
         
         <ul>
-        <li><strong>KinectCollectingData</strong> contains the Code I used to write the Joints that
-        were recognized by Kinect into csv-files. A file consists of the time in miliseconds since the start of the 
-          recording followed by the twenty joints. One joint is represented by four coordinates: x, y and z as
-          for usual points in 3D and the coordinate w, that should indicate how sure the joint was recognized.
-          Yet, w is always 1, so I ignored it.
+        <li><strong>KinectCollectingData</strong> The program to collect data is based on the Microsoft 
+        Sample `SkeletonViewer' contained in the SDK Beta v2. It was written in C\#. To record simply connect 
+        the Kinect camera to your computer and start the program. You can watch the pictures from the depth 
+        camera, the normal video view and one or two moving skeletons. When closing the program the collected 
+        joints are written to some csv-files, each containing the moves of only one skeleton.
         </li>
-        <li><strong>Data</strong> simply containes all the movement data I collected, either plain or
-          encoded via iSAX encoding.
+        <li><strong>Data</strong> Our data was recorded in bellydance lessons for beginners. Overall we 
+        recorded sixteen hours of dance training. The csv-files contain one line per frame, each starting 
+        with the time since begin of the recording followed by the coordinates of the twenty joints. Each 
+        joint has four coordinates: x, y and z as for normal coordinates in 3D and a fourth coordinate w, 
+        that should indicate the quality of the recognition of this joint. Yet w appeared to be always 1. 
+        For more details on the recorded data see chapter 3 of my Bachelor Thesis.
         </li>
-        <li><strong>Viewer</strong> contains the Viewer I used to take a look at the data.</li>
-        <li><strong>BA</strong> contains the code I used to find patterns. You'll find different states of the
-          code in the history. More information can be found in my Thesis
+        <li><strong>Viewer</strong> The viewer is a modification of the code of 
+        <a href="http://blog.aleksandarrodic.com/?p=4">Alexander Rodic</a>. It uses 
+        javascript and nodejs to realize a server, that reads in one file of the collected data (the path 
+        is specified in the code). The client.html has javascript embedded, too. The skeleton is 
+        drawn using WebGL and the data is fetched from the server. The framerate can be adjusted in the file 
+        client.js at the very end. We also implemented some jumping methods - open client.html so see how 
+        to use them.</li>
+        <li><strong>BA</strong> The programs to read the data, coarse it, encode them and search for patterns 
+        are written in Java. We also used the 
+        <a href="http://code.google.com/p/guava-libraries/wiki/GuavaExplained">guava-libraries</a> from google 
+        to faciliate e.g. the file writing. The different versions of the program can be found when browsing 
+        the history, starting with the simple window shift approach and ending with the iSAX encoding. 
+        The two resulting files in the final version contain annotations to simplify the understanding of the 
+        values. By modifying the toString()-methods of the classes Point and Breakpoint these files can be 
+        cleaned and thus be easier to handle when reading them in again.
         </li>
         </ul>
         
